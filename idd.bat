@@ -4,7 +4,7 @@
 @set /a OFFLINE = 0
 @set /a STATUS = 0
 
-ping 1.1.1.1 -w 20000 -n 3 | find "TTL" >nul 2>&1 && (set /a OFFLINE = 0) || (set /a OFFLINE = 1)
+ping 1.1.1.1 -w 10000 -n 3 | find "TTL" >nul 2>&1 && (set /a OFFLINE = 0) || (set /a OFFLINE = 1)
 
 if %OFFLINE% == 0 (
   echo target online
@@ -18,5 +18,5 @@ if %OFFLINE% == 1 (
   Time /t >> ping.txt
 )
 
-timeout /t 40
+timeout /t 50
 GOTO START
